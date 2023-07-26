@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TimestampsController;
+use App\Http\Controllers\List_dataController;
+
 
 Route::get('/home', [AuthorController::class, 'index'])->middleware('auth');
 Route::get('/add', [AuthorController::class, 'add']);
@@ -29,9 +32,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashbord', function () {
-    return view('dashbord');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+// Route::post('/dashboard', 'IndexController@post');
+// 追加
+Route::post('/work_start', [TimestampsController::class, 'work_start'])->name('work_start');
+Route::post('/work_end', [TimestampsController::class, 'work_end'])->name('work_end');
+Route::post('/rest_start', [TimestampsController::class, 'rest_start'])->name('rest_start');
+Route::post('/rest_end', [TimestampsController::class, 'rest_end'])->name('rest_end');
+Route::get('/list_data', [List_dataController::class, 'list_data']);
+// ここまで
 Route::get('/auth', [AuthorController::class,'check']);
 Route::post('/auth', [AuthorController::class,'checkUser']);
 Route::get('/works', function() {

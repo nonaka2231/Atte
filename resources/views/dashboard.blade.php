@@ -1,17 +1,63 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel=“stylesheet” href="{{ asset('css/reset.css') }}" type="text/css"> 
+    <link rel=“stylesheet” href="{{ asset('css/works.css') }}" type="text/css"> 
+</head>
+<body>
+    <header>
+    <h1>Atte</h1>
+    <nav>
+        <ul>
+            <li><a href="">ホーム</a></li>
+            <li><a href="/list_data">日付一覧</a></li>
+            <li><a href="">ログアウト</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <p>さんお疲れ様です！</p>
+
+    </main>
+    <footer>
+        <small>Atte,inc.</small>
+    </footer>
+</body>
+</html>
+<div class="button-form">
+    <ul>
+        <li>
+            <form action="{{ route('work_start') }}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-primary">勤務開始</button>
+            </form>
+        </li>
+        <li>
+            <form action="{{ route('work_end') }}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-success">勤務終了</button>
+            </form>
+        </li>
+        <li>
+            <form action="{{ route('rest_start') }}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-success">休憩開始</button>
+            </form>
+        </li>
+        <li>
+            <form action="{{ route('rest_end') }}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-success">休憩終了</button>
+            </form>
+        </li>
+    </ul>
+
